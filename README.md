@@ -1,6 +1,8 @@
 # Map of Toronto City Wards
 Leaflet map displaying Toronto City Ward boundaries.
 
+View on browser: https://glowiep.github.io/toronto-city-wards/
+
 ![Screenshot of Toronto City Ward boundaries Map](docs/toronto-city-wards-map-screenshot.png)
 
 The search bar can be used to locate an address and obtain information about the city ward boundary it falls under.
