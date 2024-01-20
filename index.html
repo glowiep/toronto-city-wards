@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Font Awesome library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+  integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+  crossorigin="anonymous"/>
+
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
@@ -13,9 +21,6 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
   crossorigin=""></script>
-  
-  <!-- UTM Zone Grid geojson -->
-  <script src="UTMZones.geojson"></script>
 
   <!-- Esri CSS for search bar -->
   <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.css"
@@ -31,12 +36,18 @@
   <script src="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.js"
   integrity="sha512-HrFUyCEtIpxZloTgEKKMq4RFYhxjJkCiF5sDxuAokklOeZ68U2NPfh4MFtyIVWlsKtVbK5GD2/JzFyAfvT5ejA=="
   crossorigin=""></script>
-
-  <!-- App CSS -->
-  <link rel="stylesheet" href="styles/main.css" />
+  
+  <!-- Turf - JavaScript library for spatial analysis -->
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
 
   <!-- jQuery CDN -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  
+  <!-- Toronto City Wards geojson -->
+  <script src="cityWardsData.geojson"></script>
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="styles/main.css" />
 
   <!-- JS Scripts -->
   <script defer src="src/map.js"></script>
@@ -44,6 +55,12 @@
   <title>Toronto City Wards</title>
 </head>
 <body>
-  
+  <div id="map"></div>
+  <button id="clearAllButton" type="button" class="btn btn-dark"><i class="fa-solid fa-angles-right fa-beat" style="color: #b73838;"></i> Reset Map</button>
+  <div id="visit-github" type="button" class="btn btn-dark" >
+    <a href="https://github.com/glowiep/toronto-city-wards" target="_blank">
+      <i class="fa-brands fa-github"></i>
+    </a>
+  </div>
 </body>
 </html>
