@@ -7,6 +7,10 @@ The search bar can be used to locate an address and obtain information about the
 
 ![Search results screenshot](docs/city-wards-map-search.png)
 
+## 🏆 Goals
+- Display GeoJSON polygon on a Leaflet web map.
+- Show GeoJSON polygon details in pop-ups.
+
 ## 🔧 Dependencies
 - jQuery
 - Leaflet
