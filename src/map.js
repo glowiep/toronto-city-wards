@@ -7,7 +7,7 @@ $(() => {
 
   // Add openstreetmap tile layer
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 29,
+    maxZoom: 19,
     minZoom: 2,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>.',
     crossOrigin: true
@@ -26,10 +26,10 @@ $(() => {
   const searchControl = L.esri.Geocoding.geosearch({
     useMapBounds: false,
     expanded: true,
-    zoomToResult: false,
+    zoomToResult: true,
     position: 'topleft',
     collapseAfterResult: true,
-    placeholder: 'Search Address'
+    placeholder: 'Search Address to Find City Ward'
   }).addTo(map);
 
   // Empty layer group to store results
@@ -47,10 +47,17 @@ $(() => {
       console.log(data.results)
       longitude = data.results[i].properties.DisplayX;
       latitude = data.results[i].properties.DisplayY;
-      isMarkerInsidePolygon();
-      markers = L.marker([latitude, longitude]).addTo(results)
-        .bindPopup(`<b>${determinedCityWard}</b> <br>${text} <br>${address}` , { autoClose: false })
-        .openPopup();
+      isMarkerInsidePolygon()
+
+      if (determinedCityWard !== '') {  // If the marker is within a city ward boundary
+        markers = L.marker([latitude, longitude]).addTo(results)
+          .bindPopup(`<b>${determinedCityWard}</b> <br>${text} <br>${address}`, { autoClose: false })
+          .openPopup();
+      } else {
+        markers = L.marker([latitude, longitude]).addTo(results)
+          .bindPopup(`<b>${text}</b> <br>${address}`, { autoClose: false })
+          .openPopup();
+      }
     }
   });
   
@@ -99,6 +106,8 @@ $(() => {
       
       if (found) {
         return determinedCityWard = `Ward ${currentCityWardPoly.properties.AREA_SHORT_CODE}: ${currentCityWardPoly.properties.AREA_NAME}`;
+      } else {
+        return determinedCityWard = '';
       }
     });
   };
