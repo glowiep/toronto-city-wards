@@ -17,7 +17,7 @@ $(() => {
   map.setMaxBounds([[-90,-180], [90,180]]);
 
   // Add zoom control with your options
-  map.zoomControl.setPosition('topright');
+  map.zoomControl.setPosition('topleft');
 
   // Add scale bar
   L.control.scale().addTo(map);
@@ -49,7 +49,7 @@ $(() => {
       latitude = data.results[i].properties.DisplayY;
       isMarkerInsidePolygon()
 
-      if (determinedCityWard !== '') {  // If the marker is within a city ward boundary
+      if (determinedCityWard) {  // If the marker is within a city ward boundary
         markers = L.marker([latitude, longitude]).addTo(results)
           .bindPopup(`<b>${determinedCityWard}</b> <br>${text} <br>${address}`, { autoClose: false })
           .openPopup();
@@ -106,9 +106,7 @@ $(() => {
       
       if (found) {
         return determinedCityWard = `Ward ${currentCityWardPoly.properties.AREA_SHORT_CODE}: ${currentCityWardPoly.properties.AREA_NAME}`;
-      } else {
-        return determinedCityWard = '';
-      }
+      } 
     });
   };
   isMarkerInsidePolygon();

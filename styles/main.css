@@ -7,6 +7,22 @@
   z-index: 1;
 }
 
+#intro {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: 'Patua One', serif;
+  padding-top: 10px;
+  h1 {
+    padding: 0px 10px;
+    border: 2px solid rgba(255,255,255,.2);
+    backdrop-filter: blur(15px);
+    background: transparent;
+  }
+}
+
 #clearAllButton {
   position: absolute;
   z-index: 2;
@@ -21,6 +37,17 @@
   z-index: 3;
   bottom: 30px;
   right: 10px;
+}
+
+.geocoder-control {
+  position: absolute;
+  z-index: 5;
+  top:50px;
+}
+
+.leaflet-control-zoom {
+  top: 100px;
+  z-index: 1;
 }
 
 a {
